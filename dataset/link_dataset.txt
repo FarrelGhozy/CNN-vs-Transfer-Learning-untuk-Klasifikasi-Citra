@@ -1,0 +1,22 @@
+========================================
+DATASET LINKS — CNN vs Transfer Learning
+========================================
+
+1. CIFAR-10 (CNN from scratch)
+   - Source: TensorFlow/Keras built-in dataset
+   - Load directly: tf.keras.datasets.cifar10.load_data()
+   - Description: 60,000 32x32 color images, 10 classes
+   - We use only 2 classes (e.g., cat vs dog, or airplane vs automobile)
+   - Docs: https://www.tensorflow.org/api_docs/python/tf/keras/datasets/cifar10
+
+2. Dogs vs Cats (Transfer Learning)
+   - Source: Kaggle — Dogs vs Cats
+   - URL: https://www.kaggle.com/c/dogs-vs-cats/data
+   - Alternative URL: https://www.microsoft.com/en-us/download/details.aspx?id=54765
+   - Description: 25,000 images of dogs and cats
+   - We use a subset of 100+ images per class
+
+Note: Both datasets are loaded programmatically in the notebook.
+No manual download needed for CIFAR-10.
+For Cats vs Dogs, the notebook includes code to download via Kaggle API
+or use a local subset if already downloaded.
