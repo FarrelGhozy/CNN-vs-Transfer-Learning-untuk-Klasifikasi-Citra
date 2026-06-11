@@ -3,21 +3,19 @@ DATASET LINKS — CNN vs Transfer Learning
 ========================================
 
 1. CIFAR-10 (CNN from scratch)
-   - Source: University of Toronto — CIFAR-10
+   - Source: University of Toronto / HuggingFace
    - URL: https://www.cs.toronto.edu/~kriz/cifar.html
-   - Download: https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
    - Description: 60,000 32x32 color images, 10 classes
    - We use only 2 classes (cat vs dog: labels 3 and 5)
+   - Local: dataset/cifar10/ (pickle files)
    - Docs: https://www.tensorflow.org/api_docs/python/tf/keras/datasets/cifar10
-   - NOTE: Official URL may return 403. Jika error, download manual dan
-     simpan di ~/.keras/datasets/cifar-10-batches-py.tar.gz
 
 2. Dogs vs Cats (Transfer Learning)
-   - Source: Kaggle — Dogs vs Cats
-   - URL: https://www.kaggle.com/c/dogs-vs-cats/data
-   - Alternative URL: https://www.microsoft.com/en-us/download/details.aspx?id=54765
+   - Source: Microsoft / Kaggle
+   - Download: https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_5340.zip
    - Description: 25,000 images of dogs and cats
-   - We use a subset of 100+ images per class
+   - We use a subset of 200 images per class
+   - Local: dataset/cats_vs_dogs/ (resized jpg files)
 
-Note: Notebook menggunakan fallback data sintetis jika download gagal.
-Untuk hasil aktual, download manual dataset dan letakkan di cache folder.
+Note: Kedua dataset disimpan di folder dataset/ lokal.
+Notebook langsung load dari folder tersebut.
