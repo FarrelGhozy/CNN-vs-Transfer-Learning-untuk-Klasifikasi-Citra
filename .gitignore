@@ -5,3 +5,6 @@ __pycache__/
 tensorflow_datasets/
 .ipynb_checkpoints/
 notebook/dataset/
+.dvc/config.local
+AGENTS.md
+PLANNING.md
