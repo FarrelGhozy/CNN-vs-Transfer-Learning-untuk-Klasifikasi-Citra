@@ -67,5 +67,12 @@ Datasets are too large to commit — use a download link instead.
 
 ## Tools
 - Python 3.x, TensorFlow/Keras or PyTorch
-- Install from `requirements.txt`
+- Install from `requirements.txt` (gunakan venv)
 - Run notebook end-to-end; all outputs (plots, metrics) must be visible after execution
+
+## Known issues
+- CIFAR-10 official download URL (cs.toronto.edu/~kriz) returns HTTP 403.
+  Notebook has fallback to synthetic data. Untuk data asli: download manual
+  dan simpan di `~/.keras/datasets/cifar-10-batches-py.tar.gz`
+- Gunakan `source venv/bin/activate` sebelum menjalankan notebook
+- PDF bisa dibuat via: `jupyter nbconvert --to html notebook/... && python3 -c "from weasyprint import HTML; HTML('report/laporan.html').write_pdf('report/laporan.pdf')"`
