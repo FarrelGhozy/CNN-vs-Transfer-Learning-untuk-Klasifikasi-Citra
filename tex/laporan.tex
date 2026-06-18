@@ -22,7 +22,7 @@ farrelaffifudin@student.cs.unida.gontor.ac.id}}
 \maketitle
 
 \begin{abstract}
-Penelitian ini membandingkan dua pendekatan klasifikasi citra: CNN from scratch dan Transfer Learning menggunakan MobileNetV2. Eksperimen dilakukan pada dua dataset berbeda—CIFAR-10 (2 kelas: kucing dan anjing) untuk CNN from scratch dan Cats vs Dogs dari Kaggle untuk Transfer Learning. CNN from scratch mencapai akurasi testing 53.93\% dengan 111.426 parameter, sementara Transfer Learning mencapai 95.00\% dengan 2.422.210 parameter. Hasil menunjukkan bahwa Transfer Learning unggul signifikan pada dataset kecil berdomain natural images, namun CNN from scratch tetap relevan untuk dataset besar dengan domain yang sangat berbeda dari ImageNet.
+Penelitian ini membandingkan dua pendekatan klasifikasi citra: CNN from scratch dan Transfer Learning menggunakan MobileNetV2. Eksperimen dilakukan pada dua dataset berbeda—CIFAR-10 (2 kelas: kucing dan anjing) untuk CNN from scratch dan Cats vs Dogs dari Kaggle untuk Transfer Learning. CNN from scratch mencapai akurasi testing 59.80\% dengan 111.426 parameter, sementara Transfer Learning mencapai 95.00\% dengan 2.422.210 parameter. Hasil menunjukkan bahwa Transfer Learning unggul signifikan pada dataset kecil berdomain natural images, namun CNN from scratch tetap relevan untuk dataset besar dengan domain yang sangat berbeda dari ImageNet.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -102,15 +102,15 @@ Input gambar di-resize ke 224$\times$224, kemudian dinormalisasi menggunakan \te
 
 \section{Hasil}
 \subsection{CNN from Scratch}
-CNN from scratch mencapai akurasi testing 53.93\% dengan loss 0.6981. Training time: 30,61 detik. Akurasi training (59.86\%) lebih tinggi dari validation (55.47\%) mengindikasikan overfitting ringan meskipun telah menggunakan Dropout dan Batch Normalization. Hasil ini wajar mengingat dataset CIFAR-10 resolusi rendah dan arsitektur yang relatif sederhana dengan hanya 111.426 parameter.
+CNN from scratch mencapai akurasi testing 59.80\% dengan loss 0.6621. Training time: 185,9 detik. Akurasi training (65.41\%) lebih tinggi dari validation (61.93\%) mengindikasikan overfitting ringan meskipun telah menggunakan Dropout dan Batch Normalization. Hasil ini wajar mengingat dataset CIFAR-10 resolusi rendah dan arsitektur yang relatif sederhana dengan hanya 111.426 parameter.
 
 \subsection{Transfer Learning}
 Transfer Learning dengan MobileNetV2 menunjukkan performa yang jauh lebih baik:
 \begin{itemize}
-\item \textbf{Feature Extraction}: Akurasi testing 95.00\%, loss 0.1877, training time 36,11 detik.
-\item \textbf{Fine-Tuning}: Akurasi testing 95.00\%, loss 0.1857, training time 31,11 detik.
+\item \textbf{Feature Extraction}: Akurasi testing 95.00\%, loss 0.1705, training time 66,72 detik.
+\item \textbf{Fine-Tuning}: Akurasi testing 95.00\%, loss 0.1720, training time 46,97 detik.
 \end{itemize}
-Validasi akurasi mencapai 96.67\% — hampir tidak ada gap dengan training accuracy (92.11\%), menunjukkan bahwa model tidak overfitting berkat representasi fitur pretrained yang sudah general.
+Validasi akurasi mencapai 96.67\% — hampir tidak ada gap dengan training accuracy (88.53\%), menunjukkan bahwa model tidak overfitting berkat representasi fitur pretrained yang sudah general.
 
 \subsection{Perbandingan Model}
 Tabel~\ref{tab:comparison} menyajikan perbandingan menyeluruh antara kedua pendekatan.
@@ -123,12 +123,12 @@ Tabel~\ref{tab:comparison} menyajikan perbandingan menyeluruh antara kedua pende
 \toprule
 \textbf{Aspek} & \textbf{CNN from Scratch} & \textbf{Transfer Learning} \\
 \midrule
-Akurasi Training & 59.86\% & 92.11\% \\
-Akurasi Validation & 55.47\% & 96.67\% \\
-Akurasi Testing & 53.93\% & 95.00\% \\
-Loss Training & 0.6607 & 0.2007 \\
-Loss Validation & 0.6879 & 0.0690 \\
-Waktu Training & 30.6s & 67.2s \\
+Akurasi Training & 65.41\% & 88.53\% \\
+Akurasi Validation & 61.93\% & 96.67\% \\
+Akurasi Testing & 59.80\% & 95.00\% \\
+Loss Training & 0.6165 & 0.2716 \\
+Loss Validation & 0.6557 & 0.0841 \\
+Waktu Training & 185.9s & 113.7s \\
 Jumlah Parameter & 111,426 & 2,422,210 \\
 Risiko Overfitting & Rendah & Rendah \\
 Kemudahan Implementasi & Mudah (arsitektur sederhana) & Sedang (perlu strategi freeze/fine-tune) \\
@@ -140,14 +140,14 @@ Kesesuaian Dataset & Cocok untuk dataset ukuran saat ini & Sangat cocok (domain 
 \end{table}
 
 \subsection{Confusion Matrix dan Visualisasi}
-Confusion matrix untuk CNN from scratch menunjukkan distribusi prediksi yang mendekati acak (akurasi 53.93\% atau hanya sedikit di atas tebakan acak 50\%). Sebaliknya, Transfer Learning menunjukkan mayoritas prediksi benar dengan sangat sedikit false positive dan false negative, konsisten dengan akurasi testing 95\%.
+Confusion matrix untuk CNN from scratch menunjukkan distribusi prediksi yang mendekati acak (akurasi 59.80\% atau sedikit di atas tebakan acak 50\%). Sebaliknya, Transfer Learning menunjukkan mayoritas prediksi benar dengan sangat sedikit false positive dan false negative, konsisten dengan akurasi testing 95\%.
 
 \section{Pembahasan dan Analisis}
 \subsection{Performa Model}
-Transfer Learning unggul signifikan pada seluruh metrik evaluasi. Akurasi testing 95.00\% versus 53.93\% menunjukkan bahwa fitur ImageNet yang sudah dipelajari MobileNetV2 sangat relevan untuk domain natural images. CNN from scratch, meskipun hanya mencapai 53.93\%, tetap memvalidasi bahwa arsitektur dapat belajar — hasil di atas random chance (50\%) menunjukkan model mampu mengekstrak pola dari data, hanya saja representasinya belum sekaya model pretrained.
+Transfer Learning unggul signifikan pada seluruh metrik evaluasi. Akurasi testing 95.00\% versus 59.80\% menunjukkan bahwa fitur ImageNet yang sudah dipelajari MobileNetV2 sangat relevan untuk domain natural images. CNN from scratch, meskipun hanya mencapai 59.80\%, tetap memvalidasi bahwa arsitektur dapat belajar — hasil di atas random chance (50\%) menunjukkan model mampu mengekstrak pola dari data, hanya saja representasinya belum sekaya model pretrained.
 
 \subsection{Overfitting}
-Kedua model menunjukkan risiko overfitting yang rendah. CNN from scratch memiliki gap training-validation sekitar 4.39\%, yang dapat diterima. Transfer Learning menunjukkan gap yang sangat kecil, bahkan validation accuracy lebih tinggi dari training — indikasi bahwa model memiliki representasi fitur yang sangat general. Regularisasi melalui Dropout, Batch Normalization, EarlyStopping, dan augmentasi data efektif menekan overfitting.
+Kedua model menunjukkan risiko overfitting yang rendah. CNN from scratch memiliki gap training-validation sekitar 3.48\%, yang dapat diterima. Transfer Learning menunjukkan gap yang sangat kecil, bahkan validation accuracy lebih tinggi dari training — indikasi bahwa model memiliki representasi fitur yang sangat general. Regularisasi melalui Dropout, Batch Normalization, EarlyStopping, dan augmentasi data efektif menekan overfitting.
 
 \subsection{Stabilitas Training}
 Transfer Learning menunjukkan kurva learning yang lebih stabil: loss turun smooth, validation metrics mengikuti train metrics tanpa fluktuasi besar. CNN from scratch lebih fluktuatif karena harus mempelajari representasi visual dari awal. Fine-Tuning dengan learning rate kecil ($5\times10^{-6}$) menjaga stabilitas dengan tidak merusak fitur pretrained yang sudah baik.
