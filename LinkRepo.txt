@@ -1,0 +1,15 @@
+
+-IDENTITAS MAHASISWA & LINK REPOSITORY-
+
+
+Nama    : Farrel Ghozy Affifudin
+NIM     : 452024611053
+Prodi   : Teknik Informatika
+Universitas : Universitas Darussalam Gontor
+Mata Kuliah : Mesin Learning 2
+Tugas   : CNN vs Transfer Learning untuk Klasifikasi Citra
+
+Link Repository GitHub:
+https://github.com/FarrelGhozy/CNN-vs-Transfer-Learning-untuk-Klasifikasi-Citra
+
+
